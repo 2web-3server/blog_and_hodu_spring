@@ -1,1 +1,77 @@
-유저테이블
+-- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
+
+-- sukho_contents Table Create SQL /
+CREATE TABLE sukho_contents
+(
+    `pk_contents`  INT            NOT NULL    AUTO_INCREMENT COMMENT 'pk_contents', 
+    `title`        VARCHAR(45)    NULL        COMMENT 'title', 
+    `contnet`      TEXT           NULL        COMMENT 'content', 
+    `witten`       DATETIME       DEFAULT CURRENT_TIMESTAMP, 
+    `last_adjust`  DATETIME       NULL        COMMENT 'last_adjust', 
+    `thumb`        VARCHAR(45)    NULL        COMMENT 'thumb', 
+     PRIMARY KEY (pk_contents)
+);
+
+
+-- hodu_content Table Create SQL
+CREATE TABLE hodu_content
+(
+    `pk_contents`  INT            NOT NULL    AUTO_INCREMENT COMMENT 'pk_contents', 
+    `title`        VARCHAR(45)    NULL        COMMENT 'title', 
+    `content`      TEXT           NULL        COMMENT 'content', 
+    `witten`       DATETIME       DEFAULT CURRENT_TIMESTAMP, 
+    `picked_date`  DATETIME       NULL        COMMENT 'picked_date', 
+    `pic1`         VARCHAR(45)    NULL        COMMENT 'pic1', 
+    `pic2`         VARCHAR(45)    NULL        COMMENT 'pic2', 
+    `pic3`         VARCHAR(45)    NULL        COMMENT 'pic3', 
+     PRIMARY KEY (pk_contents)
+);
+
+
+-- sukho_comments Table Create SQL
+CREATE TABLE sukho_comments
+(
+    `pk_contents`  INT            NOT NULL    AUTO_INCREMENT, 
+    `id_contents`  INT            NULL, 
+    `email`        VARCHAR(45)    NULL, 
+    `comment`      TEXT           NULL, 
+    `witten`       DATETIME       DEFAULT CURRENT_TIMESTAMP, 
+    `password`     VARCHAR(50)    NULL, 
+     PRIMARY KEY (pk_contents)
+);
+
+ALTER TABLE sukho_comments
+    ADD CONSTRAINT FK_sukho_comments_id_contents_sukho_contents_pk_contents FOREIGN KEY (id_contents)
+        REFERENCES sukho_contents (pk_contents) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- hodu_comments Table Create SQL
+CREATE TABLE hodu_comments
+(
+    `pk_contents`  INT            NOT NULL    AUTO_INCREMENT COMMENT 'pk_comments', 
+    `id_contents`  INT            NULL        COMMENT 'id_contents', 
+    `email`        VARCHAR(45)    NULL        COMMENT 'email', 
+    `comment`      TEXT           NULL        COMMENT 'comment', 
+    `witten`       DATETIME       NULL        DEFAULT CURRENT_TIMESTAMP, 
+    `password`     VARCHAR(50)    NULL        COMMENT 'password', 
+     PRIMARY KEY (pk_contents)
+);
+
+ALTER TABLE hodu_comments
+    ADD CONSTRAINT FK_hodu_comments_id_contents_hodu_content_pk_contents FOREIGN KEY (id_contents)
+        REFERENCES hodu_content (pk_contents) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- hodu_youtube Table Create SQL
+CREATE TABLE hodu_youtube
+(
+    `pk_youtube`   INT            NOT NULL    AUTO_INCREMENT, 
+    `title`        VARCHAR(45)    NULL, 
+    `content`      TEXT           NULL, 
+    `witten`       DATETIME       DEFAULT CURRENT_TIMESTAMP, 
+    `picked_date`  DATETIME       NULL, 
+    `url`          text           NULL, 
+     PRIMARY KEY (pk_youtube)
+);
+
+drop table hodu_comments, hodu_content, hodu_youtube, sukho_comments, sukho_contents;
