@@ -1,5 +1,7 @@
 package com.sukho;
 
+import com.google.gson.Gson;
+import com.util.ApiSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +15,20 @@ public class SukhoController {
     }
 
     @GetMapping("/sukho/post")
-    public String return_post (Model model, @RequestParam(value = "index")String index) {
+    public String return_post (Model model, @RequestParam(value = "index")String index) throws Exception {
+        Gson gson = new Gson();
+        String str = ApiSender.get();
+        System.out.println(str);
 
+        PostModel postModel = gson.fromJson(str, PostModel.class);
 
-        model.addAttribute("title","제목이양");
-        model.addAttribute("date","지금지금");
-        model.addAttribute("contents","내용이지");
+        Content content = postModel.getContent();
+
+        if (model.getAttribute("title") == null){
+            model.addAttribute("title",content.title);
+            model.addAttribute("created_at",content.created_at);
+            model.addAttribute("content",content.content);
+        }
 
         return "sukho/post";
     }
