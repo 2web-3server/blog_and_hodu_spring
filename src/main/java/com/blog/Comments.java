@@ -1,4 +1,4 @@
-package com.sukho;
+package com.blog;
 
 public class Comments {
 

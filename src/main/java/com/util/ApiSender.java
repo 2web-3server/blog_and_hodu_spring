@@ -53,10 +53,6 @@ public class ApiSender{
                 }
                 br.close();
                 res = sb.toString();
-                System.out.println(res);
-//                mapper.readValue(sbstring, new TypeReference<List<Map<String, Object>>>(){});
-//                System.out.println(2);
-//                model.addAttribute("listMap", listMap);
             } else {
                 res = "false";
             }

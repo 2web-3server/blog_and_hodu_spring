@@ -1,4 +1,4 @@
-package com.sukho;
+package com.blog;
 
 import com.google.gson.Gson;
 import com.util.ApiSender;
@@ -17,6 +17,9 @@ public class SukhoController {
     @GetMapping("/sukho/post")
     public String return_post (Model model, @RequestParam(value = "index")String index) throws Exception {
         Gson gson = new Gson();
+
+        //api를 get방식으로 요청한 후 돌려받는 메서드
+        //json String형식 또는 'False' 문자열을 리턴한다
         String str = ApiSender.get();
         System.out.println(str);
 
