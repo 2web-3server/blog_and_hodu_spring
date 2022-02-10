@@ -1,27 +1,16 @@
 package com.util;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.ui.Model;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class ApiSender{
-    public static String get() throws Exception {
-        URL url = new URL("http://127.0.0.1:8000/contents/4");
+    public static String get(String urlString) throws Exception {
+        URL url = new URL(urlString);
 
-        ObjectMapper mapper = new ObjectMapper();
         StringBuilder sb = new StringBuilder();
         BufferedReader br;
-
-        List<Map<String, Object>> listMap = new ArrayList<Map<String,Object>>();
 
         String res;
         try {
