@@ -38,4 +38,11 @@ public class BlogController {
         return "sukho/post";
     }
 
+    @GetMapping("/sukho/write")
+    public String return_write (Model model, @RequestParam(value = "blogger")String blogger) throws Exception {
+
+
+        return "sukho/write";
+    }
+
 }
