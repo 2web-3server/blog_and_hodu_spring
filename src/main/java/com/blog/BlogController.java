@@ -45,4 +45,39 @@ public class BlogController {
         return "sukho/write";
     }
 
+
+
+    //    Jinah
+    @GetMapping("/jinah")
+    public String return_jinah (Model model) {
+        return "jinah/index";
+    }
+
+    @GetMapping("/jinah/post")
+    public String return_jinah_post (Model model, @RequestParam(value = "index")int index) throws Exception {
+        Gson gson = new Gson();
+
+        //api를 get방식으로 요청한 후 돌려받는 메서드
+        //json String형식 또는 'False' 문자열을 리턴한다
+        PostService postService = new PostService();
+        PostModel postModel = postService.get_post(index);
+        Content content=postModel.getContent();
+        List<Comments> comments = postModel.getComments();
+
+        if (model.getAttribute("title") == null){
+            model.addAttribute("title",content.title);
+            model.addAttribute("created_at",content.created_at);
+            model.addAttribute("content",content.content);
+        }
+
+        return "jinah/post";
+    }
+
+    @GetMapping("/jinah/write")
+    public String return_jinah_write (Model model, @RequestParam(value = "blogger")String blogger) throws Exception {
+
+
+        return "jinah/write";
+    }
+
 }

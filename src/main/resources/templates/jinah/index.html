@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymleaf/layout" layout:decorator="sukho/layout/layout">
+    <th:block layout:fragment="content">
+        <header class="masthead" style="background-image: url('/jinah/assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Suk Ho</h1>
+                            <span class="subheading">Back-End Developer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                        <a href="/about/">
+                            <h2 class="post-title">About me</h2>
+                            <h3 class="post-subtitle">what I can do</h3>
+                        </a>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">Back-End</h2>
+                        </a>
+                        <p class="post-meta">
+                            Java, Python, Node.Js etc...
+                        </p>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">Front-End</h2>
+                        </a>
+                        <p class="post-meta">
+                            JavaScript, React, Jquery, Jsp, thymeleaf etc...
+                        </p>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                        <a href="post.html">
+                            <h2 class="post-title">Etc</h2>
+                        </a>
+                        <p class="post-meta">
+                            errors, solutions etc...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</html>
