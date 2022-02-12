@@ -78,7 +78,6 @@ public class Uploader {
                 // 정보 출력
                 sFileInfo += "&bNewLine=true";
 
-                System.out.println(sRealFileNm);
                 // img 태그의 title 속성을 원본파일명으로 적용시켜주기 위함
                 sFileInfo += "&sFileName="+ sRealFileNm;
                 sFileInfo += "&sFileURL="+"/upload/blog/images/"+sRealFileNm;
