@@ -39,8 +39,26 @@
         <script type="text/javascript" src="/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript">
-            const form = document.getElementById("write_post");
+            // 이미지 파일 목록 저장할 변수
+            let file_names=[];
 
+            function filename(obj) {
+                let counter=0;
+                for (let i =0 ; i <= file_names.length; i++){
+                    if(file_names.length == 0){
+
+                    }else if (file_names[i] == obj){
+                        counter++
+                    }
+                }
+                if (counter == 0){
+                    file_names[file_names.length] = obj;
+                }
+            }
+
+
+            // form 상수에 저장
+            const form = document.getElementById("write_post");
             // 폼이 submit 될 때 멈추고 submit_post() 함수 실행
             form.addEventListener("submit", event => {
                 event.preventDefault();
@@ -56,6 +74,8 @@
                     fCreator: "createSEditor2"
                 });
             })
+
+            // 폼 내용 전송
             function submit_post() {
                 oEditors.getById["se2"].exec("UPDATE_CONTENTS_FIELD", [])
                 let content = document.getElementById("se2").value;
@@ -93,6 +113,7 @@
                     })
                 }
             }
+
         </script>
     </th:block>
 </html>
