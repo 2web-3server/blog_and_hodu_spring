@@ -81,31 +81,30 @@
                 let content = document.getElementById("se2").value;
                 console.log(content);
 
-                let form = $("form")[0]
-                console.log(form)
 
-                let formData = new FormData(form)
-                console.log(formData.get("title"))
-                console.log(formData.get("content"))
 
                 if (confirm("글을 등록하시겠습니까?")){
+                    let form = $("form")[0]
+                    console.log(form)
 
-                    let form = $("write_post")[0]
                     let formData = new FormData(form)
+                    console.log(formData.get("title"))
+                    console.log(formData.get("content"))
+                    formData.append("blogger", "sukho")
 
                     $.ajax({
-                        cache : false,
-                        url : "/customer/message/send/",
-                        processData: false,
-                        contentType: false,
                         type : 'POST',
                         data : formData,
+                        dataType: 'json',
+                        url : "/sukho/write",
+                        processData: false,
+                        contentType: false,
                     }).done(function (res) {
-                        if (res.result == null){
-                            alert("메시지 발송에 실패했습니다.\n 다시 시도해 주세요.")
+                        if (res["200"]["status"] != "success"){
+                            alert("등록에 실패 하였습니다.")
                         }else {
-                            alert("메시지 발송이 완료되었습니다.")
-                            window.location.href = "/customer/message/sent/"
+                            alert("등록되었습니다.")
+                            window.location.reload()
                         }
                     }).fail(function (xhr, status, e) {
                         console.log(xhr, status, e)

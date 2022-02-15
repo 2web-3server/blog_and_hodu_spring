@@ -8,6 +8,6 @@ import java.util.List;
 @Getter
 @Setter
 public class Content {
-    public String title,content,created_at,update_at,category_id,thumb;
+    public String title,content,created_at,update_at,category_id,thumb,blogger;
 
 }

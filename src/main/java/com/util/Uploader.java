@@ -12,7 +12,7 @@ import java.util.UUID;
 
 
 public class Uploader {
-    public String upload_image(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public void upload_image(HttpServletRequest request, HttpServletResponse response) throws Exception{
         try {
             //파일정보
             String sFileInfo = "";
@@ -89,8 +89,6 @@ public class Uploader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return "";
     }
 }
 
