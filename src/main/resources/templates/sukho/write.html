@@ -78,18 +78,11 @@
             // 폼 내용 전송
             function submit_post() {
                 oEditors.getById["se2"].exec("UPDATE_CONTENTS_FIELD", [])
-                let content = document.getElementById("se2").value;
-                console.log(content);
-
-
 
                 if (confirm("글을 등록하시겠습니까?")){
                     let form = $("form")[0]
-                    console.log(form)
 
                     let formData = new FormData(form)
-                    console.log(formData.get("title"))
-                    console.log(formData.get("content"))
                     formData.append("blogger", "sukho")
 
                     $.ajax({
