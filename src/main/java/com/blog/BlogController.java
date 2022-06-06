@@ -93,6 +93,7 @@ public class BlogController {
 
         return "jinah/write";
     }
+
 //    List
     @GetMapping("/jinah/list")
     public String return_jinah_list (Model model, @RequestParam(value = "blogger")String blogger) throws Exception {
